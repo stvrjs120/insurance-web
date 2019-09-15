@@ -18,6 +18,7 @@ export class CustomersListComponent implements OnInit {
 
   populateForm(customer: Customer) {
     this.service.formData = Object.assign({}, customer);
+    // this.service.getListCustomerInsurances(customer.id);
   }
 
   deleteCustomer(id: number) {

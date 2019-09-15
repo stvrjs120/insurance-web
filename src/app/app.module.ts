@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomerComponent } from './customers/customers/customer.component';
 import { CustomersListComponent } from './customers/customers-list/customers-list.component';
+import { CustomersInsurancesComponent } from './customers/customers-insurances/customers-insurances.component';
 
 // Insurance Components
 import { InsurancesComponent } from './insurances/insurances.component';
@@ -40,7 +41,8 @@ import { ROUTES } from './app.routes';
     InsuranceComponent,
     CustomerComponent,
     CoveringPipe,
-    RiskLevelPipe
+    RiskLevelPipe,
+    CustomersInsurancesComponent
   ],
   imports: [
     BrowserModule,

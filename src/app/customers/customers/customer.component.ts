@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomersService } from '../../shared/customers.service';
+import { InsurancesService } from '../../shared/insurances.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
 
@@ -10,10 +11,11 @@ import { NgForm } from '@angular/forms';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor(private service: CustomersService, private toastr: ToastrService) { }
+  constructor(private customersService: CustomersService, private insurancesService: InsurancesService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
+    this.insurancesService.getListInsurances();
   }
 
   resetForm(form?: NgForm) {
@@ -21,9 +23,10 @@ export class CustomerComponent implements OnInit {
       form.form.reset();
     }
 
-    this.service.formData = {
+    this.customersService.formData = {
       id: 0,
       name: '',
+      insuranceId: 0,
       customerInsurances: null
     };
 
@@ -31,7 +34,7 @@ export class CustomerComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    if (this.service.formData.id === 0) {
+    if (this.customersService.formData.id === 0) {
       this.insertRecord(form);
    } else {
      this.updateRecord(form);
@@ -39,11 +42,11 @@ export class CustomerComponent implements OnInit {
   }
 
   insertRecord(form: NgForm) {
-    this.service.postCustomer(form.value).subscribe(
+    this.customersService.postCustomer(form.value).subscribe(
       resp => {
         this.resetForm(form);
         this.toastr.success('Submitted successfully', 'Insurance Management');
-        this.service.getListCustomers();
+        this.customersService.getListCustomers();
       },
       err => {
         console.log(err);
@@ -52,11 +55,11 @@ export class CustomerComponent implements OnInit {
   }
 
   updateRecord(form: NgForm) {
-    this.service.putCustomer(form.value).subscribe(
+    this.customersService.putCustomer(form.value).subscribe(
       resp => {
         this.resetForm(form);
         this.toastr.info('Updated successfully', 'Insurance Management');
-        this.service.getListCustomers();
+        this.customersService.getListCustomers();
       },
       err => {
         console.log(err);

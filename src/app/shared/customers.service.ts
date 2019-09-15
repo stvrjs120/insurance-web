@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CustomersService {
-
+  
   formData: Customer;
   readonly rootURL = 'http://localhost:57234/api';
   list: Customer[];
@@ -30,4 +30,11 @@ export class CustomersService {
   deleteCustomer(id: number) {
     return this.http.delete(`${this.rootURL}/Customers/${id}`);
   }
+
+  getListCustomerInsurances(id: number) {
+    this.http.get(`${this.rootURL}/Customers/${id}`)
+      .toPromise()
+      .then(resp => (this.list.find(x => x.id === id).customerInsurances = resp));
+  }
+
 }

@@ -1,5 +1,5 @@
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-    <input type="hidden" #id="ngModel" name="id" [(ngModel)]="service.formData.id" [value]="service.formData.id">
+    <input type="hidden" #Id="ngModel" name="id" [(ngModel)]="service.formData.id" [value]="service.formData.id">
 
     <div class="form-group">
         <div class="input-group">
@@ -30,7 +30,7 @@
                     <i class="fas fa-house-damage"></i>
                 </div>
             </div>
-            <select class="form-control" name="covering" required [(ngModel)]="service.formData.covering" required>
+            <select class="form-control" name="covering" required [(ngModel)]="service.formData.covering">
                     <option hidden [value]="0"  selected>Covering</option>    
                     <option [value]="1">Terremoto</option>
                     <option [value]="2">Incendio</option>

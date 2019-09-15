@@ -6,5 +6,6 @@
     <tr *ngFor="let customer of service.list">
         <td (click)="populateForm(customer)">{{customer.name}}</td>
         <td><i class="fas fa-trash-alt fa-lg text-danger" (click)="deleteCustomer(customer.id)"></i></td>
+        <td><i class="fas fa-shield-alt fa-lg text-primary" (click)="customerInsurances(customer.id)"></i></td>
     </tr>
 </table>
