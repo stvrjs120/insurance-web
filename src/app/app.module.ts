@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -19,9 +20,15 @@ import { InsuranceComponent } from './insurances/insurance/insurance.component';
 import { InsurancesListComponent } from './insurances/insurances-list/insurances-list.component';
 
 // Services
-import { InsuranceService } from './shared/insurance.service';
+import { InsurancesService } from './shared/insurances.service';
+import { CustomersService } from './shared/customers.service';
+
+// Pipes
 import { CoveringPipe } from './shared/covering.pipe';
 import { RiskLevelPipe } from './shared/risk-level.pipe';
+
+// Router
+import { ROUTES } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -40,10 +47,12 @@ import { RiskLevelPipe } from './shared/risk-level.pipe';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    RouterModule.forRoot(ROUTES, {useHash: true}),
   ],
   providers: [
-    InsuranceService
+    InsurancesService,
+    CustomersService
   ],
   bootstrap: [AppComponent]
 })

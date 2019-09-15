@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InsuranceService } from '../../shared/insurance.service';
+import { InsurancesService } from '../../shared/insurances.service';
 import { Insurance } from '../../shared/insurance.model';
 import { ToastrService } from 'ngx-toastr';
 
@@ -10,10 +10,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class InsurancesListComponent implements OnInit {
 
-  constructor(private service: InsuranceService, private toastr: ToastrService) { }
+  constructor(private service: InsurancesService, private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.service.getListInsurance();
+    this.service.getListInsurances();
   }
 
   populateForm(insurance: Insurance) {
@@ -24,7 +24,7 @@ export class InsurancesListComponent implements OnInit {
     if (confirm('Are you sure to delete this record?')) {
       this.service.deleteInsurance(id)
         .subscribe(resp => {
-          this.service.getListInsurance();
+          this.service.getListInsurances();
           this.toastr.warning('Deleted success', 'Insurance Management');
         }, err => {
           console.log(err);

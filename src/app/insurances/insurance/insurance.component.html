@@ -1,5 +1,5 @@
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-    <input type="hidden" #id="ngModel" name="id" [(ngModel)]="service.formData.id">
+    <input type="hidden" #id="ngModel" name="id" [(ngModel)]="service.formData.id" [value]="service.formData.id">
 
     <div class="form-group">
         <div class="input-group">

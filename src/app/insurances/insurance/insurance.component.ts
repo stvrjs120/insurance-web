@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InsuranceService } from '../../shared/insurance.service';
+import { InsurancesService } from '../../shared/insurances.service';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class InsuranceComponent implements OnInit {
 
-  constructor(private service: InsuranceService, private toastr: ToastrService) {
+  constructor(private service: InsurancesService, private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -32,6 +32,8 @@ export class InsuranceComponent implements OnInit {
       price: 0,
       riskLevel: 0
     };
+
+    return false;
   }
 
   onSubmit(form: NgForm) {
@@ -47,7 +49,7 @@ export class InsuranceComponent implements OnInit {
       resp => {
         this.resetForm(form);
         this.toastr.success('Submitted successfully', 'Insurance Management');
-        this.service.getListInsurance();
+        this.service.getListInsurances();
       },
       err => {
         console.log(err);
@@ -60,7 +62,7 @@ export class InsuranceComponent implements OnInit {
       resp => {
         this.resetForm(form);
         this.toastr.info('Updated successfully', 'Insurance Management');
-        this.service.getListInsurance();
+        this.service.getListInsurances();
       },
       err => {
         console.log(err);

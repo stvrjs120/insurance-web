@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class InsuranceService {
+export class InsurancesService {
 
   formData: Insurance;
   readonly rootURL = 'http://localhost:57234/api';
@@ -21,7 +21,7 @@ export class InsuranceService {
     return this.http.put(`${this.rootURL}/Insurances/${formData.id}`, formData);
   }
 
-  getListInsurance() {
+  getListInsurances() {
     this.http.get(`${this.rootURL}/Insurances`)
       .toPromise()
       .then(resp => this.list = resp as Insurance[]);

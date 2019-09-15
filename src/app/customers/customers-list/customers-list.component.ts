@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomersService } from '../../shared/customers.service';
+import { ToastrService } from 'ngx-toastr';
+import { Customer } from '../../shared/customer.model';
 
 @Component({
   selector: 'app-customers-list',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomersListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: CustomersService, private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.service.getListCustomers();
+  }
+
+  populateForm(customer: Customer) {
+    this.service.formData = Object.assign({}, customer);
+  }
+
+  deleteCustomer(id: number) {
+    if (confirm('Are you sure to delete this record?')) {
+      this.service.deleteCustomer(id)
+        .subscribe(resp => {
+          this.service.getListCustomers();
+          this.toastr.warning('Deleted success', 'Customer Management');
+        }, err => {
+          console.log(err);
+        });
+    }
+
   }
 
 }
