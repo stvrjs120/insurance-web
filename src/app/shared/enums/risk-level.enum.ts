@@ -1,6 +1,6 @@
 export enum RiskLevel {
-    Bajo,
-    Medio,
-    MedioAlto,
-    Alto
+    Bajo = 1,
+    Medio = 2,
+    MedioAlto = 3,
+    Alto = 4
 }

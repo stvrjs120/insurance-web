@@ -1,0 +1,101 @@
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" #id="ngModel" name="id" [(ngModel)]="service.formData.id">
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+            </div>
+            <input name="name" #Name="ngModel" [(ngModel)]="service.formData.name" class="form-control" placeholder="Name" required required maxlength="50">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-pencil-alt"></i>
+                </div>
+            </div>
+            <input name="description" #Description="ngModel" [(ngModel)]="service.formData.description" class="form-control" placeholder="Description" required maxlength="200">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-house-damage"></i>
+                </div>
+            </div>
+            <select class="form-control" name="covering" required [(ngModel)]="service.formData.covering" required>
+                    <option hidden [value]="0"  selected>Covering</option>    
+                    <option [value]="1">Terremoto</option>
+                    <option [value]="2">Incendio</option>
+                    <option [value]="3">Robo</option>
+                    <option [value]="4">Perdida</option>
+                  </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+            </div>
+            <input type="date" name="validFrom" tooltop #ValidFrom="ngModel" [(ngModel)]="service.formData.validFrom" class="form-control" placeholder="Valid from" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+            </div>
+            <input type="number" name="coverageTime" #CoverageTime="ngModel" [(ngModel)]="service.formData.coverageTime" class="form-control" placeholder="Coverage Time (months)" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+            </div>
+            <input type="number" name="price" #Price="ngModel" [(ngModel)]="service.formData.price" class="form-control" placeholder="Price" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+            </div>
+            <select class="form-control" name="riskLevel" required [(ngModel)]="service.formData.riskLevel" required>
+                    <option hidden [value]="0"  selected>Risk Level</option>    
+                    <option [value]="1">Bajo</option>
+                    <option [value]="2">Medio</option>
+                    <option [value]="3">MedioAlto</option>
+                    <option [value]="4">Alto</option>
+                  </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-success btn-lg btn-block" [disabled]="form.invalid" type="submit">
+                <i class="fas fa-database"></i> Submit
+        </button>
+        <button class="btn btn-primary btn-lg btn-block" (click)="resetForm()">
+                <i class="fas fa-broom"></i> Reset
+        </button>
+    </div>
+</form>

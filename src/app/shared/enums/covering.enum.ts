@@ -1,6 +1,6 @@
 export enum Covering {
-        Terremoto,
-        Incendio,
-        Robo,
-        Perdida
+        Terremoto = 1,
+        Incendio = 2,
+        Robo = 3,
+        Perdida = 4
 }

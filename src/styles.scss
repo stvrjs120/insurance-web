@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+input.ng-touched.ng-invalid,
+select.ng-touched.ng-invalid {
+    border-color: #DC3545;
+}
+
+input.ng-valid,
+select.ng-valid {
+    border-color: #28A745
+}
+
+table tr:hover {
+    cursor: pointer;
+}

@@ -1,1 +1,22 @@
-<p>insurances-list works!</p>
+<table class="table table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Descripcion</th>
+        <th>Covering</th>
+        <th style="width: 100px;">Valid from</th>
+        <th>Coverage Time</th>
+        <th>Price</th>
+        <th>Risk Level</th>
+        <th>Options</th>
+    </tr>
+    <tr *ngFor="let insurance of service.list">
+        <td (click)="populateForm(insurance)">{{insurance.name}}</td>
+        <td (click)="populateForm(insurance)">{{insurance.description}}</td>
+        <td (click)="populateForm(insurance)">{{insurance.covering | covering}}</td>
+        <td (click)="populateForm(insurance)">{{insurance.validFrom | date}}</td>
+        <td (click)="populateForm(insurance)">{{insurance.coverageTime}}</td>
+        <td (click)="populateForm(insurance)">{{insurance.price | currency}}</td>
+        <td (click)="populateForm(insurance)">{{insurance.riskLevel | riskLevel}}</td>
+        <td><i class="fas fa-trash-alt fa-lg text-danger" (click)="deleteInsurance(insurance.id)"></i></td>
+    </tr>
+</table>
